@@ -1,45 +1,558 @@
-<!doctype html>
-
-<!-- this is a comment for human! -->
-
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Waseem Ahmed - Portfolio</title>
 
-  <header>
-      <title>Waseem Ahmed's Portal</title>
-      <link rel="stylesheet" type="text/css" href="css/master.css">
-      <link rel="FaviconIcon" href = "favicon.ico" type="image/x-icon">
-      <link rel="shortcut" href= "favicon.ico" type=""="image/x-icon">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <meta name="name" content="Waseem Ahmed's Portal">
-      <meta name="robots" content="noindex, nofollow">
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
 
-  </header>
+    <style>
+      :root {
+        --primary: #0a192f;
+        --secondary: #64ffda;
+        --accent: #8892b0;
+        --text: #ccd6f6;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "SF Mono", "Fira Code", monospace;
+      }
+
+      body {
+        background: var(--primary);
+        color: var(--text);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Navbar */
+      .navbar {
+        position: sticky;
+        top: 0;
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(136, 146, 176, 0.2);
+        z-index: 1000;
+        padding: 1rem 2rem;
+      }
+
+      .nav-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .nav-link {
+        color: var(--text);
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        transition: color 0.3s;
+      }
+
+      .nav-link:hover {
+        color: var(--secondary);
+      }
+
+      /* Sections */
+      section {
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      section h2 {
+        color: var(--secondary);
+        font-size: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      /* Experience Cards */
+      .experience-card {
+        background: rgba(17, 34, 64, 0.5);
+        border-radius: 10px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        transition: transform 0.3s;
+      }
+      .experience-card:hover {
+        transform: translateY(-5px);
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fadein {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      /* Skills Grid */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+      .skill-category {
+        background: rgba(17, 34, 64, 0.5);
+        padding: 1.5rem;
+        border-radius: 8px;
+      }
+      .skill-category h3 {
+        margin-bottom: 1rem;
+        color: var(--secondary);
+      }
+      .skill-tag {
+        display: inline-block;
+        background: var(--secondary);
+        color: var(--primary);
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        margin: 0.3rem;
+        font-size: 0.9rem;
+        font-weight: bold;
+      }
+
+      /* Buttons */
+      .btn {
+        padding: 0.8rem 1.5rem;
+        border-radius: 25px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s;
+      }
+      .btn-primary {
+        background: linear-gradient(45deg, #64ffda, #00b4d8);
+        color: var(--primary);
+      }
+      .btn-secondary {
+        border: 2px solid var(--secondary);
+        color: var(--secondary);
+      }
+
+      /* Utility */
+      .section-heading {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      .sub-text {
+        color: var(--accent);
+        max-width: 600px;
+        margin-bottom: 2rem;
+      }
+      ul {
+        list-style: inside;
+        color: var(--accent);
+        margin-top: 0.5rem;
+      }
+    </style>
+  </head>
 
   <body>
-<img src="images/banner.jpg" alt="its a good image" width="75%">
-<h1>Waseem Ahmed's Portal</h1>
-<h2>About Me</h2>
-<p>I am a website developer</p>
-<p>I am purusing Bachelors in Computer Science Engineering</p>
-<p>I am from India</p>
-<h2>Credentials and Portfolio</h2>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-content">
+        <h1 style="color: var(--secondary)">Waseem Ahmed</h1>
+        <div class="nav-links">
+          <a href="#summary" class="nav-link">Summary</a>
+          <a href="#education" class="nav-link">Education</a>
+          <a href="#experience" class="nav-link">Experience</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#skills" class="nav-link">Skills</a>
+        </div>
+      </div>
+    </nav>
 
-<p><a href="resume.html">My Resume</a> | <a href="https://github.com/Waseem0912-coder">My GitHub</a></p>
-<h2>Contact</h2>
+    <!-- Summary Section -->
+    <section id="summary" class="animate-fadein">
+      <h2 class="section-heading">Data Scientist & ML Engineer</h2>
+      <p class="sub-text">
+        A motivated Data Science professional with intermediate experience in
+        machine learning, data analysis, and model optimization. Successfully
+        enhanced large-scale models, including fine-tuning Whisper for
+        transcription and optimizing Vision-Language Models for biological data
+        analysis. Proficient in Python and SQL, with a strong background in
+        data-driven projects and tool development. Eager to leverage analytical
+        and technical skills to contribute to data science and analytics
+        initiatives.
+      </p>
+      <p style="margin-bottom: 2rem">
+        <strong>Contact:</strong> <br />
+        <span style="color: var(--accent)">Phone:</span> +1 (352) 871-4522
+        <br />
+        <span style="color: var(--accent)">Email:</span>
+        ahmed.waseem.usa@gmail.com
+      </p>
+      <div style="display: flex; gap: 1rem">
+        <a
+          href="https://linkedin.com/in/waseem09"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary"
+        >
+          <i class="fab fa-linkedin"></i> Connect
+        </a>
+        <a href="mailto:ahmed.waseem.usa@gmail.com" class="btn btn-secondary">
+          <i class="fas fa-envelope"></i> Email Me
+        </a>
+        <a href="tel:+13528714522" class="btn btn-secondary">
+          <i class="fas fa-phone"></i> Call
+        </a>
+      </div>
+    </section>
 
-<p>Email:<a href="mailto:sherwaseem@gmail.com"> sherwaseem@gmail.com </a></p>
+    <!-- Education Section -->
+    <section id="education" class="animate-fadein">
+      <h2>Education</h2>
+      <div class="experience-card">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+          "
+        >
+          <i
+            class="fas fa-graduation-cap"
+            style="color: var(--secondary); font-size: 1.5rem"
+          ></i>
+          <div>
+            <h3>Masters in Computer Science</h3>
+            <p style="color: var(--accent)">
+              University of Florida (Jan 2023 - Dec 2024)
+            </p>
+          </div>
+        </div>
+        <p style="color: var(--accent)">
+          Pursuing advanced coursework and research in Data Science, Machine
+          Learning, and Software Engineering.
+        </p>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="animate-fadein">
+      <h2>Work Experience</h2>
+
+      <!-- UF Data Studio -->
+      <div class="experience-card">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+          "
+        >
+          <i
+            class="fas fa-briefcase"
+            style="color: var(--secondary); font-size: 1.5rem"
+          ></i>
+          <div>
+            <h3>Graduate Research Assistant</h3>
+            <p style="color: var(--accent)">
+              UF Data Studio (Aug 2024 - Dec 2024)
+            </p>
+          </div>
+        </div>
+        <ul>
+          <li>
+            Utilized Python and data analysis to examine Indian accent audio
+            datasets across 26 states, enhancing ASR model accuracy via feature
+            extraction with HiperGator and Slurm.
+          </li>
+          <li>
+            Fine-tuned OpenAI’s Whisper LLM (Medium 769M) for Indian-accented
+            transcription, employing ML methodologies to boost model accuracy
+            and processing efficiency.
+          </li>
+          <li>
+            Developed data collection strategies for 1,000 diverse audio
+            samples, ensuring accent-inclusive training data for improved speech
+            model robustness.
+          </li>
+        </ul>
+      </div>
+
+      <!-- BioVision Lab -->
+      <div class="experience-card">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+          "
+        >
+          <i
+            class="fas fa-briefcase"
+            style="color: var(--secondary); font-size: 1.5rem"
+          ></i>
+          <div>
+            <h3>Graduate Assistant Researcher</h3>
+            <p style="color: var(--accent)">
+              BioVision Lab (Sep 2024 - Present)
+            </p>
+          </div>
+        </div>
+        <ul>
+          <li>
+            Applied ML techniques to develop and deploy large Vision-Language
+            Models (VLMs) such as Florence, BioClip, CLIP, and UniCL, optimizing
+            parallel processing on A100 GPUs.
+          </li>
+          <li>
+            Reduced cosine similarity computation time by 30% by optimizing
+            high-dimensional embedding vector execution on GPU for trait-based
+            querying.
+          </li>
+          <li>
+            Engineered zero-shot testing for bird species classification,
+            achieving 60%-92% accuracy at the genus level for biological data
+            analysis.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Teaching Assistant -->
+      <div class="experience-card">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+          "
+        >
+          <i
+            class="fas fa-chalkboard-teacher"
+            style="color: var(--secondary); font-size: 1.5rem"
+          ></i>
+          <div>
+            <h3>Teaching Assistant</h3>
+            <p style="color: var(--accent)">
+              University of Florida (Sep 2023 - Dec 2023)
+            </p>
+          </div>
+        </div>
+        <ul>
+          <li>
+            Led mini lectures and discussion sections for a class of 350
+            students, increasing participation by 15% for topics like React,
+            Strappi, JS, and Agile concepts.
+          </li>
+          <li>
+            Collaborated on the CAMS project with teams from Texas University
+            and UFL; facilitated hands-on activities to improve comprehension of
+            software functionalities.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="animate-fadein">
+      <h2>Projects</h2>
+
+      <div class="experience-card">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+          "
+        >
+          <i
+            class="fas fa-project-diagram"
+            style="color: var(--secondary); font-size: 1.5rem"
+          ></i>
+          <div>
+            <h3>Medical LLM for Simplifying Patient Notes</h3>
+          </div>
+        </div>
+        <ul>
+          <li>
+            Collected and extracted data from medical textbooks and patient
+            notes, creating a prompt dataset of 1,000 examples for fine-tuning a
+            foundational model.
+          </li>
+          <li>
+            Trained on 50,000+ patient notes to improve accuracy and relevance
+            of doctor’s notes from EHR.
+          </li>
+          <li>
+            Enhanced chat capabilities through fine-tuning, increasing overall
+            clarity of generated medical documentation by 20%.
+          </li>
+        </ul>
+      </div>
+
+      <div class="experience-card">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+          "
+        >
+          <i
+            class="fas fa-project-diagram"
+            style="color: var(--secondary); font-size: 1.5rem"
+          ></i>
+          <div>
+            <h3>Cuong Nhu Cypress Dojo / Cuong Nhu Web D</h3>
+          </div>
+        </div>
+        <ul>
+          <li>
+            Developed visually immersive website designs with React and Tailwind
+            CSS, boosting user engagement by 40% and conversions by 25%.
+          </li>
+          <li>
+            Conducted user surveys to gather feedback on site functionality,
+            improving user satisfaction by 15%.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="animate-fadein">
+      <h2>Technical Skills</h2>
+      <div class="skills-grid">
+        <!-- Programming Languages -->
+        <div class="skill-category">
+          <h3>Programming Languages</h3>
+          <div>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">C</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">R</span>
+            <span class="skill-tag">Bash</span>
+            <span class="skill-tag">CSS</span>
+            <span class="skill-tag">HTML</span>
+          </div>
+        </div>
+
+        <!-- ML & Data Tools -->
+        <div class="skill-category">
+          <h3>ML & Data Tools</h3>
+          <div>
+            <span class="skill-tag">Data Analysis</span>
+            <span class="skill-tag">Data Science</span>
+            <span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag">NLP</span>
+            <span class="skill-tag">Computer Vision</span>
+            <span class="skill-tag">Time Series</span>
+            <span class="skill-tag">Scikit-Learn</span>
+            <span class="skill-tag">TensorFlow</span>
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">Numpy</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">Seaborn</span>
+            <span class="skill-tag">Matplotlib</span>
+            <span class="skill-tag">Data Visualization</span>
+          </div>
+        </div>
+
+        <!-- Frameworks & Platforms -->
+        <div class="skill-category">
+          <h3>Frameworks & Platforms</h3>
+          <div>
+            <span class="skill-tag">Django</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">REST APIs</span>
+            <span class="skill-tag">SLURM</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Kubernetes</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">CI/CD</span>
+            <span class="skill-tag">Apache Airflow</span>
+            <span class="skill-tag">Cloud Computing</span>
+            <span class="skill-tag">Google Cloud</span>
+          </div>
+        </div>
+
+        <!-- Databases & DevOps -->
+        <div class="skill-category">
+          <h3>Databases & DevOps</h3>
+          <div>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">Data Engineering</span>
+            <span class="skill-tag">Data Architecture</span>
+            <span class="skill-tag">ETL</span>
+          </div>
+        </div>
+
+        <!-- Other Skills/Interests -->
+        <div class="skill-category">
+          <h3>Other Skills & Interests</h3>
+          <div>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">Operating Systems</span>
+            <span class="skill-tag">Mathematics</span>
+            <span class="skill-tag">Linear Algebra</span>
+            <span class="skill-tag">Calculus</span>
+            <span class="skill-tag">Jupyter</span>
+            <span class="skill-tag">Problem-solving</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Smooth scroll functionality
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Intersection Observer for fade-in animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      });
+
+      document.querySelectorAll(".animate-fadein").forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
   </body>
-<h2>Portfolio</h2>
-<h3>GitHub: <a href="https://github.com/Waseem0912-coder" target="_blank"> https://github.com/Waseem0912-coder</a> </h3>
-  <h2>Education</h2>
-  <h3>Manipal University Jaipur</h3>
-  <h4>B.Tech Computer Science Engineering</h4>
-  <h2>Professional Experiences</h2>
-  <h3>None</h3>
-
-  <footer>
-<hr>
-<code>Copyright (c) 2020 Waseem Ahmed</code>
-  </footer>
-
 </html>
