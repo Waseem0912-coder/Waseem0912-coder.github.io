@@ -229,6 +229,7 @@
       filter: brightness(85%);
     }
 
+
     /* Responsive Design */
     @media (max-width: 768px) {
       .nav-content {
@@ -277,24 +278,100 @@
       border-top: 1px solid rgba(136, 146, 176, 0.2);
       margin-top: 2rem;
     }
+
+       /* Additions/Modifications for Navbar and Hover Effects */
+    
+    /* Mobile Navbar Toggle */
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Mobile Nav Links */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--primary);
+        flex-direction: column;
+        padding: 1rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        border-bottom: 1px solid rgba(136, 146, 176, 0.2);
+      }
+
+      .nav-links.active {
+        max-height: 500px;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-content {
+        position: relative;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    /* Shine Halo Effect for Cards */
+    .experience-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .experience-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent 25%,
+        rgba(100, 255, 218, 0.1) 50%,
+        transparent 75%
+      );
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.6s;
+      transform: translate(0, 0) rotate(0deg);
+      pointer-events: none;
+    }
+
+    .experience-card:hover::before {
+      opacity: 1;
+      transform: translate(50%, 50%) rotate(15deg);
+    }
+
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="nav-content">
-      <h1 style="color: var(--secondary); font-size: 1.8rem; margin: 0;">Waseem Ahmed</h1>
-      <div class="nav-links">
-        <a href="#summary" class="nav-link">Summary</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#education" class="nav-link">Education</a>
-        <a href="#experience" class="nav-link">Experience</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#accomplishments" class="nav-link">Product Innovation Challenge Winners</a>
-      </div>
-    </div>
-  </nav>
+    <nav class="navbar">
+        <div class="nav-content">
+          <h1 style="color: var(--secondary); font-size: 1.8rem; margin: 0;">Waseem Ahmed</h1>
+          <button class="nav-toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="nav-links">
+            <a href="#summary" class="nav-link">Summary</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#accomplishments" class="nav-link">Product Innovation Challenge</a>
+            <a href="#education" class="nav-link">Education</a>
+            <a href="#experience" class="nav-link">Experience</a>
+            <a href="#projects" class="nav-link">Projects</a>
+          </div>
+        </div>
+      </nav>
 
   <!-- Summary Section -->
   <section id="summary" class="animate-fadein">
@@ -584,6 +661,29 @@
     document.querySelectorAll('.animate-fadein').forEach((el) => {
       observer.observe(el);
     });
+
+       // Add mobile navbar toggle functionality
+       const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      navToggle.querySelector('i').classList.toggle('fa-bars');
+      navToggle.querySelector('i').classList.toggle('fa-times');
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          navLinks.classList.remove('active');
+          navToggle.querySelector('i').classList.add('fa-bars');
+          navToggle.querySelector('i').classList.remove('fa-times');
+        }
+      });
+    });
+
+    
   </script>
 </body>
 </html>
