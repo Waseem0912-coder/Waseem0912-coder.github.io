@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Ensures proper mobile rendering -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Waseem Ahmed - Portfolio</title>
+  
+  <!-- Font Awesome -->
+  <link 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Fira+Code&display=swap" 
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --primary: #0a192f;
+      --secondary: #64ffda;
+      --accent: #8892b0;
+      --text: #ccd6f6;
+      --bg-card: rgba(17, 34, 64, 0.5);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* BODY & TYPOGRAPHY */
+    body {
+      background: var(--primary);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(136, 146, 176, 0.2);
+      z-index: 1000;
+      padding: 1rem 2rem;
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* DEFAULT NAV LINKS (DESKTOP) */
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      color: var(--text);
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+    .nav-link:hover {
+      color: var(--secondary);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      color: var(--secondary);
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    /* EXPERIENCE/PROJECT CARDS */
+    .experience-card {
+      position: relative;
+      background: var(--bg-card);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      transition: transform 0.3s;
+      padding-right: 4rem;
+    }
+    .experience-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* SKILLS GRID */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-category {
+      background: var(--bg-card);
+      padding: 1.2rem;
+      border-radius: 8px;
+    }
+    .skill-category h3 {
+      color: var(--secondary);
+      margin-bottom: 1rem;
+      font-family: 'Poppins', sans-serif;
+    }
+    .skill-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      border-radius: 6px;
+      transition: background 0.3s, transform 0.3s;
+      font-family: 'Fira Code', monospace; /* Code-like feel for text */
+    }
+    .skill-item:hover {
+      background: rgba(100, 255, 218, 0.1);
+      transform: translateY(-3px);
+    }
+    .skill-icon {
+      width: 25px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--secondary);
+    }
+
+    /* TECH STACK TAGS */
+    .tech-stack {
+      margin-bottom: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tech-tag {
+      background: rgba(100, 255, 218, 0.1);
+      color: var(--secondary);
+      border: 1px solid var(--secondary);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-block;
+      padding: 0.6rem 1rem;
+      border-radius: 4px;
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 600;
+      transition: background 0.3s, color 0.3s;
+    }
+    .btn-primary {
+      background: var(--secondary);
+    }
+    .btn-primary:hover {
+      filter: brightness(85%);
+    }
+    .btn-secondary {
+      background: var(--accent);
+      color: var(--primary);
+    }
+    .btn-secondary:hover {
+      filter: brightness(85%);
+    }
+
+    /* RESPONSIVE DESIGN - MOBILE */
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+      .nav-content {
+        position: relative;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      /* Hide nav-links by default on mobile */
+      .nav-links {
+        display: none;
+      }
+      /* When active, show them full-screen */
+      .nav-links.active {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--primary);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        z-index: 999;
+      }
+
+      section {
+        padding: 2rem 1rem;
+      }
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      .experience-card {
+        padding: 1.5rem;
+      }
+    }
+
+    /* HAMBURGER (MOBILE) */
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadein {
+      animation: fadeIn 0.6s ease-out forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    /* HALO EFFECT FOR CARDS */
+    .experience-card {
+      position: relative;
+      overflow: hidden;
+    }
+    .experience-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent 25%,
+        rgba(100, 255, 218, 0.1) 50%,
+        transparent 75%
+      );
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.6s;
+      transform: translate(0, 0) rotate(0deg);
+      pointer-events: none;
+    }
+    .experience-card:hover::before {
+      opacity: 1;
+      transform: translate(50%, 50%) rotate(15deg);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      color: var(--accent);
+      font-size: 0.8rem;
+      padding: 1rem;
+      border-top: 1px solid rgba(136, 146, 176, 0.2);
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-content">
+      <!-- Brand -->
+      <h1 style="color: var(--secondary); font-size: 1.8rem; margin: 0;">
+        Waseem Ahmed
+      </h1>
+      <!-- Hamburger (Mobile) -->
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- NAV LINKS -->
+      <div class="nav-links">
+        <a href="#summary" class="nav-link">Summary</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#accomplishments" class="nav-link">Product Innovation Challenge</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#projects" class="nav-link">Projects</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SUMMARY SECTION -->
+  <section id="summary" class="animate-fadein">
+    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Software + AI/ML Engineer</h2>
+    <p style="color: var(--accent); max-width: 700px; margin-bottom: 2rem;">
+      Software + AI/ML Engineer with 1+ years of experience optimizing AI/ML models (NLP, LLM) for speech and biological data pipelines. Delivered 15% accuracy gains in ASR systems for Indian dialects via transformer architectures and accelerated bio-analysis workflows by 20% through vision-language model optimizations. Passionate about leveraging deep learning expertise (TensorFlow, PyTorch) and software design principles to innovate developer tools and streamline AI deployment.
+    </p>
+
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <a href="https://www.linkedin.com/in/waseem09/" class="btn btn-primary" target="_blank">
+        <i class="fab fa-linkedin"></i> Connect
+      </a>
+      <a href="mailto:ahmed.waseem.usa@gmail.com" class="btn btn-secondary">
+        <i class="fas fa-envelope"></i> Email Me
+      </a>
+      <a href="Main Resume.pdf" class="btn btn-secondary" target="Main Resume.pdf">
+        <i class="fas fa-file"></i> Resume
+      </a>
+    </div>
+  </section>
+
+  <!-- SKILLS SECTION -->
+  <section id="skills" class="animate-fadein">
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+
+      <!-- Languages & Frameworks -->
+      <div class="skill-category">
+        <h3><i class="fas fa-code"></i> Languages & Frameworks</h3>
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fab fa-python"></i></div>
+          <span>Python (TensorFlow, PyTorch)</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fas fa-c"></i></div>
+          <span>C/C++</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fab fa-js"></i></div>
+          <span>JavaScript (React, Node.js)</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fas fa-database"></i></div>
+          <span>SQL (PostgreSQL)</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fas fa-terminal"></i></div>
+          <span>Bash/SLURM</span>
+        </div>
+      </div>
+
+      <!-- AI/ML Specialties -->
+      <div class="skill-category">
+        <h3><i class="fas fa-brain"></i> AI/ML Expertise</h3>
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fas fa-language"></i></div>
+          <span>NLP/LLM (BERT, GPT-3.5)</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fas fa-eye"></i></div>
+          <span>Vision-Language Models</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fas fa-wave-square"></i></div>
+          <span>Speech Recognition (ASR)</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fas fa-dna"></i></div>
+          <span>Bio-Data Analysis</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+          <span>Model Optimization</span>
+        </div>
+      </div>
+
+      <!-- Infrastructure & Tools -->
+      <div class="skill-category">
+        <h3><i class="fas fa-tools"></i> Infrastructure</h3>
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fab fa-docker"></i></div>
+          <span>Docker/Kubernetes</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fas fa-server"></i></div>
+          <span>HPC (HiperGator)</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fas fa-cloud"></i></div>
+          <span>Google Cloud</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fas fa-code-branch"></i></div>
+          <span>CI/CD Pipelines</span>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fas fa-database"></i></div>
+          <span>Data Engineering (ETL)</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ACCOMPLISHMENTS SECTION -->
+  <section id="accomplishments" class="animate-fadein">
+    <h2>Product Innovation Challenge</h2>
+    <div class="experience-card">
+      <h3 style="margin-bottom:1rem;">Fire-Archy Project</h3>
+      <p style="color: var(--accent); margin-bottom:1rem;">
+        Awarded first place for the project <strong>Fire-Archy</strong>: a three-part solution that:
+      </p>
+      <ul style="list-style: inside; color: var(--accent); margin-bottom: 1rem;">
+        <li>Included a mobile application backed by a NASA-patented decision tree for wildfire evacuation protocols</li>
+        <li>Designed universal car filter using NASA patents for emergency conditions</li>
+        <li>Incorporated NASA FIRMS data for predictive wildfire monitoring</li>
+      </ul>
+      <p style="color: var(--accent);">
+        Recognized under the NASA T2U initiative for integrating NASA IP into real-world solutions.
+      </p>
+    </div>
+  </section>
+
+  <!-- EDUCATION SECTION -->
+  <section id="education" class="animate-fadein">
+    <h2>Education</h2>
+    <div class="experience-card">
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+        <i class="fas fa-graduation-cap" style="color: var(--secondary); font-size: 1.5rem;"></i>
+        <div>
+          <h3>University of Florida</h3>
+          <p style="color: var(--accent);">M.S. Computer Science (Jan 2023 - Dec 2024)</p>
+          <p style="color: var(--accent); font-size: 0.9rem;">Gainesville, FL</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE SECTION -->
+  <section id="experience" class="animate-fadein">
+    <h2>Experience</h2>
+    
+    <!-- BioVision Lab -->
+    <div class="experience-card">
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+        <i class="fas fa-briefcase" style="color: var(--secondary); font-size: 1.5rem;"></i>
+        <div>
+          <h3>Graduate Assistant Researcher</h3>
+          <p style="color: var(--accent);">BioVision Lab | Aug 2024 - Present</p>
+        </div>
+      </div>
+      <div class="tech-stack">
+        <span class="tech-tag">PyTorch</span>
+        <span class="tech-tag">A100 GPUs</span>
+        <span class="tech-tag">Transformer Models</span>
+        <span class="tech-tag">Biological Data</span>
+      </div>
+      <ul style="list-style: inside; color: var(--accent);">
+        <li>Optimized vision-language models (Florence, BioClip) for 1M+ biological data points analysis</li>
+        <li>Accelerated embedding workflows by 30% through GPU optimization of cosine similarity algorithms</li>
+        <li>Designed zero-shot evaluation achieving 92% genus-level accuracy in bird species classification</li>
+      </ul>
+    </div>
+
+    <!-- University of Florida Teaching -->
+    <div class="experience-card">
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+        <i class="fas fa-chalkboard-teacher" style="color: var(--secondary); font-size: 1.5rem;"></i>
+        <div>
+          <h3>Teaching Assistant</h3>
+          <p style="color: var(--accent);">University of Florida | Aug 2023 - Dec 2025</p>
+        </div>
+      </div>
+      <div class="tech-stack">
+        <span class="tech-tag">React</span>
+        <span class="tech-tag">JavaScript</span>
+        <span class="tech-tag">Agile</span>
+        <span class="tech-tag">Full-Stack</span>
+      </div>
+      <ul style="list-style: inside; color: var(--accent);">
+        <li>Delivered 50+ lectures on React/JS to 350+ students, improving comprehension by 15%</li>
+        <li>Designed modular full-stack project workflows adopted by 80% of students</li>
+        <li>Reduced project lifecycle bottlenecks by 25% through curriculum alignment</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section id="projects" class="animate-fadein">
+    <h2>Projects</h2>
+
+    <!-- Accent-Inclusive ASR Optimization -->
+    <div class="experience-card">
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+        <i class="fas fa-assistive-listening-systems" style="color: var(--secondary); font-size: 1.5rem;"></i>
+        <div>
+          <h3>Accent-Inclusive ASR Model</h3>
+          <p style="color: var(--accent);">OpenAI Whisper | Python | SLURM</p>
+        </div>
+      </div>
+      <div class="tech-stack">
+        <span class="tech-tag">ASR</span>
+        <span class="tech-tag">Transformer</span>
+        <span class="tech-tag">HPC</span>
+        <span class="tech-tag">NLP</span>
+      </div>
+      <ul style="list-style: inside; color: var(--accent);">
+        <li>Engineered data pipeline for 26+ Indian dialects (10K+ hours audio)</li>
+        <li>Improved ASR accuracy by 15% through feature extraction optimization</li>
+        <li>Fine-tuned Whisper LLM (769M params) achieving 90% F1-score</li>
+      </ul>
+    </div>
+
+    <!-- Medical LLM Development -->
+    <div class="experience-card">
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+        <i class="fas fa-medkit" style="color: var(--secondary); font-size: 1.5rem;"></i>
+        <div>
+          <h3>Medical NLP/LLM Development</h3>
+          <p style="color: var(--accent);">BERT | Hugging Face | PyTorch</p>
+        </div>
+      </div>
+      <div class="tech-stack">
+        <span class="tech-tag">Healthcare NLP</span>
+        <span class="tech-tag">LLM Fine-tuning</span>
+        <span class="tech-tag">EHR Integration</span>
+      </div>
+      <ul style="list-style: inside; color: var(--accent);">
+        <li>Curated 1,000+ medical dataset enhancing language interpretation by 25%</li>
+        <li>Fine-tuned LLM on 50K+ patient notes reducing annotation time by 30%</li>
+        <li>Improved clinical note accuracy by 20% through EHR integration</li>
+      </ul>
+    </div>
+
+    <!-- Club Web Developer -->
+    <div class="experience-card">
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+        <i class="fas fa-laptop-code" style="color: var(--secondary); font-size: 1.5rem;"></i>
+        <div>
+          <h3>Cuong Nhu Club Developer</h3>
+          <p style="color: var(--accent);">React | Tailwind CSS | UX Design</p>
+        </div>
+      </div>
+      <div class="tech-stack">
+        <span class="tech-tag">Web Development</span>
+        <span class="tech-tag">Responsive Design</span>
+        <span class="tech-tag">User Feedback</span>
+      </div>
+      <ul style="list-style: inside; color: var(--accent);">
+        <li>Increased user engagement by 40% through responsive design improvements</li>
+        <li>Boosted conversion rates by 25% via data-driven UI enhancements</li>
+        <li>Implemented feedback system raising satisfaction scores by 15%</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      Thank you for visiting my portfolio. Feel free to reach out anytime!<br>
+      &copy; 2025 Waseem Ahmed - All rights reserved.
+    </p>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Intersection Observer for fade-in
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    });
+
+    document.querySelectorAll('.animate-fadein').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Mobile Navbar Toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      // Toggle hamburger <-> close icon
+      navToggle.querySelector('i').classList.toggle('fa-bars');
+      navToggle.querySelector('i').classList.toggle('fa-times');
+    });
+
+    // Close menu when clicking a link on mobile
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          navLinks.classList.remove('active');
+          navToggle.querySelector('i').classList.add('fa-bars');
+          navToggle.querySelector('i').classList.remove('fa-times');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
