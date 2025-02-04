@@ -2,7 +2,7 @@
   "name": "waseem-portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://github.com/Waseem0912-coder/Waseem0912-coder.github.io",
+  "homepage": "https://Waseem0912-coder.github.io/Waseem0912-coder.github.io",
   "dependencies": {
     "cra-template": "1.2.0",
     "react": "^18.3.1",
