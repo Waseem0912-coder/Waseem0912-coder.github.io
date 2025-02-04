@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Waseem0912-coder.github.io/static/css/main.0f77318a.css",
+    "main.js": "/Waseem0912-coder.github.io/static/js/main.2ac81ff5.js",
+    "index.html": "/Waseem0912-coder.github.io/index.html",
+    "main.0f77318a.css.map": "/Waseem0912-coder.github.io/static/css/main.0f77318a.css.map",
+    "main.2ac81ff5.js.map": "/Waseem0912-coder.github.io/static/js/main.2ac81ff5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0f77318a.css",
+    "static/js/main.2ac81ff5.js"
+  ]
+}
